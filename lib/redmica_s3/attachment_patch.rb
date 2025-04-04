@@ -89,8 +89,7 @@ module RedmicaS3
       # and computes its hash
       def files_to_final_location
         if @temp_file
-          self.disk_directory = 
-          put disk_directory
+          self.disk_directory = target_directory
           self.disk_filename = Attachment.disk_filename(filename, disk_directory)
           Rails.logger.info("Saving attachment '#{self.diskfile}' (#{@temp_file.size} bytes)")
           sha = Digest::SHA256.new
