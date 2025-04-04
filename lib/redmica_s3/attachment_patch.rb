@@ -1,4 +1,5 @@
 require "zip"
+require 'pry'
 
 module RedmicaS3
   module AttachmentPatch
@@ -45,6 +46,7 @@ module RedmicaS3
               else
                 # Avoid race condition: Create an empty S3 object
                 s3obj.put
+                binding.pry
                 break File.basename(s3obj.key)
               end
             end

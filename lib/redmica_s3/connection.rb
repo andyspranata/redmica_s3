@@ -1,4 +1,5 @@
 require 'aws-sdk-s3'
+require 'pry'
 
 Aws.config[:ssl_verify_peer] = false
 
@@ -42,6 +43,7 @@ module RedmicaS3
       end
 
       def put(disk_filename, original_filename, data, content_type = 'application/octet-stream', opt = {})
+        binding.pry
         target_folder = opt[:target_folder] || self.folder
         digest = opt[:digest].presence
         options = {
